@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DxNaLyh2okqZNv/00vb7jNPDd6n2BEMus1rVhMfHE+jDRHtIqS9/GFJbSpocejwClAK6Cy3naU3TWaK0pA+tjg==",
+  "success": true,
+  "projectFilePath": "/home/svbomer/tmp/features/xml_semantics/xml_semantics.csproj",
+  "expectedPackageFiles": [
+    "/home/svbomer/.nuget/packages/microsoft.net.illink.tasks/8.0.100-1.22619.1/microsoft.net.illink.tasks.8.0.100-1.22619.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,7 @@
+<Project>
+  <ItemGroup>
+    <Using Include="System.Runtime.Versioning.SupportedOSPlatformAttribute" Alias="RequiresFeatureAttribute" />
+    <Using Include="System.Runtime.Versioning.SupportedOSPlatformGuardAttribute" Alias="FeatureCheckAttribute" />
+    <!-- <SupportedPlatform Include="Foo;Bar;Baz" /> -->
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.csproj.AssemblyReference.cache
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.GeneratedMSBuildEditorConfig.editorconfig
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.AssemblyInfoInputs.cache
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.AssemblyInfo.cs
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.csproj.CoreCompileInputs.cache
+/home/svbomer/tmp/features/proposed_semantics/app/bin/Debug/net8.0/app
+/home/svbomer/tmp/features/proposed_semantics/app/bin/Debug/net8.0/app.deps.json
+/home/svbomer/tmp/features/proposed_semantics/app/bin/Debug/net8.0/app.runtimeconfig.json
+/home/svbomer/tmp/features/proposed_semantics/app/bin/Debug/net8.0/app.dll
+/home/svbomer/tmp/features/proposed_semantics/app/bin/Debug/net8.0/app.pdb
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.dll
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/refint/app.dll
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.pdb
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/app.genruntimeconfig.cache
+/home/svbomer/tmp/features/proposed_semantics/app/obj/Debug/net8.0/ref/app.dll
