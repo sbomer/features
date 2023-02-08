@@ -34,7 +34,7 @@ The proposal has the following pieces:
 
 `RequiresFeatureAttribute` serves as a base type for feature attributes. Attribute types derived from this which follow the naming convention `RequiresFeatureNameAttribute` (where `FeatureName` is the name of the defined feature) are treated as feature annotation attributes. Each derived attribute logically defines a separate feature. Calls to methods annotated with a feature attribute will produce a warning during compilation.
 
-When trimming, calls to the feature-annotated method will be warn if the feature is not enabled. The feature may be disabled when trimming by passing the feature settings `--feature FeatureName false`. If such a flag is not passed, the defaults for a feature are defined according to the rules for feature dependencies (see below).
+When trimming, calls to the feature-annotated method will be warn if the feature is not enabled. The feature may be disabled when trimming by passing the feature settings `--feature FeatureName false`. If such a flag is not passed, the defaults for a feature are defined according to the rules for feature defaults (see [4. Default feature settings](#4-default-feature-settings)).
 
 ```csharp
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Class, AllowMultiple = true)]
@@ -88,7 +88,9 @@ partial class Foo
 
 ### 3. Feature dependencies
 
-A feature attribute itself may be annotated with a feature attribute to express that it requires (depends on) another feature.
+A feature attribute itself may be annotated with a feature attribute to express that it requires (depends on) another feature. For the reasoning behind this, see [Why we need feature dependencies](#why-we-need-feature-dependencies).
+
+```csharp
 
 Example:
 
