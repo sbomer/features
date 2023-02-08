@@ -15,8 +15,10 @@ We would like to design a system which allows analyzers to treat these constant-
 ## Non-goals
 
 - Complete parity with the XML substitutions as they exist today. (95% should be good enough.)
-- Define the precise circumstances under which calls to feature-attributed methods will warn (see existing spec.)
-- Define the exact circumstances under which feature guards will prevent warnings (see notes at end)
+- Define the precise circumstances under which calls to feature-attributed methods will warn
+  - See existing spec: https://github.com/dotnet/runtime/blob/main/docs/design/tools/illink/feature-attribute-semantics.md
+- Define the exact circumstances under which feature guards will prevent warnings
+  - See [Supported patterns for calls to feature guards](#supported-paterns-for-calls to-feature-guards)
 - Define the exact wording of warnings produced by the analyzer
 
 ## Design
@@ -60,8 +62,6 @@ partial class Foo {
 `FeatureCheckAttribute<T>` is an attribute that can be applied to a static boolean method, causing it to be treated as a guard for calls to code annotated with the feature attribute `T`. The analyzer will not warn for guarded calls to feature-annotated methods.
 
 ILLink and ILCompiler will also recognize the association between the feature check and the feature attribute, so that disabling a feature when trimming will cause the feature check to be substituted with the constant `false` (and enabling a feature when trimming will cause it to be substituted with `true`). This is designed to replace the majority use case for XML substitutions.
-
-Open question: How important is it to support non-boolean substitutions? Even if we don't support it in the first version, we might want to consider how the attribute could evolve to support this in the future.
 
 ```csharp
 class FeatureCheckAttribute<T> : Attribute
@@ -139,7 +139,7 @@ class Program {
 
 ```
 
-## 4. Default feature settings
+### 4. Default feature settings
 
 A feature may be explicitly enabled or disabled by passing a feature setting to the compiler (or ILlink/ILCompiler). If invalid feature settings are passed (enabling a feature but disabling a feature on which it depends), the compiler will produce an error.
 
@@ -175,6 +175,18 @@ if (ReflectionBasedSerializer.IsEnabled) {
 }
 ```
 
+## Open questions
+
+How important is it to support non-boolean substitutions? Even if we don't support it in the first version, we might want to consider how the attribute could evolve to support this in the future.
+
+This has a lot of overlap with existing proposals:
+- Capability-based analyzer: https://github.com/dotnet/designs/pull/261
+- Experimental APIs: https://github.com/dotnet/designs/pull/285
+
+Can we agree that the capability-based attributes and experimental APIs should use the semantics defined in https://github.com/dotnet/runtime/blob/main/docs/design/tools/illink/feature-attribute-semantics.md, and not the `Obsolete` semantics, for example? If so, those designs (particularly the capability-based analyzer) should be unified with this one.
+
+The API shape here is not finalized. We will want to consider alternatives and iterate on the exact shape.
+
 ## Notes
 
 ### Supported paterns for calls to feature guards
@@ -182,8 +194,6 @@ if (ReflectionBasedSerializer.IsEnabled) {
 ILLink and ILCompiler have different implementations of branch removal based on known constant-returning methods. The analyzer will be made to support a simple set of patterns for calls to these methods that is a subset of the patterns supported by ILLink and ILCompiler, so that code which doesn't warn in the analyzer will not warn in ILLink or ILCompiler, but there may be code which doesn't warn in ILLink or ILCompiler but does warn in the analyzer.
 
 The specific set of supported patterns is not defined here, but will be initially chosen to be a small set of obviously useful patterns; initially, the support will likely be limited to if statements where the condition is a simple call to a single feature guard. We will expand the set of supported patterns as needed, using testing to ensure that the analyzer supports a subset of the patterns supported by ILLink and ILCompiler.
-
-### Handling of trim-incompatible features and AOT-incompatible features
 
 ### Why we need feature dependencies
 
