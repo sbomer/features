@@ -9,6 +9,7 @@ We would like to design a system which allows analyzers to treat these constant-
 ## Goals
 
 - Define an attribute model for feature annotations and feature guards
+- Enable analyzers to understand feature guards (without reading XML)
 - Allow most existing XML substitutions to be replaced by the attribute-based model (aim for 95%)
 - Allow third-party libraries to define their own feature annotations and feature guards
 
