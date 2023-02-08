@@ -19,12 +19,12 @@ We would like to design a system which allows analyzers to treat these constant-
 - Define the precise circumstances under which calls to feature-attributed methods will warn
   - See existing spec: https://github.com/dotnet/runtime/blob/main/docs/design/tools/illink/feature-attribute-semantics.md
 - Define the exact circumstances under which feature guards will prevent warnings
-  - See [Supported patterns for calls to feature guards](#supported-paterns-for-calls to-feature-guards)
+  - See [Supported patterns for calls to feature guards](#supported-patterns-for-calls-to-feature-guards)
 - Define the exact wording of warnings produced by the analyzer
 
 ## Design
 
-The proposal has three pieces:
+The proposal has the following pieces:
 1. A way to define an attribute that makes it a "feature annotation".
 2. A way to define a boolean "feature check" method which guards calls to feature-annotated APIs.
 3. A way to express that one feature logically depends on another
@@ -190,7 +190,7 @@ The API shape here is not finalized. We will want to consider alternatives and i
 
 ## Notes
 
-### Supported paterns for calls to feature guards
+### Supported patterns for calls to feature guards
 
 ILLink and ILCompiler have different implementations of branch removal based on known constant-returning methods. The analyzer will be made to support a simple set of patterns for calls to these methods that is a subset of the patterns supported by ILLink and ILCompiler, so that code which doesn't warn in the analyzer will not warn in ILLink or ILCompiler, but there may be code which doesn't warn in ILLink or ILCompiler but does warn in the analyzer.
 
@@ -320,7 +320,7 @@ This approach is similar to the current usage in dotnet/runtime, which defines a
 - `System.Resources.ResourceReader.AllowCustomResourceTypes`
 - `System.Runtime.InteropServices.Marshal.IsBuiltInComSupported`
 
-These can be by passing feature settings when trimming. For example, to enable one but disable the other:
+These can be set by passing feature settings when trimming. For example, to enable one but disable the other:
 
 ```xml
 <PropertyGroup>
